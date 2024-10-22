@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const http = require('http')
 const os = require('os')
 const port = process.env.PORT || 3001;
+const { createClient } = require('redis');
 
 const app = express()
 app.use(express.static('public'))
@@ -80,9 +81,19 @@ app.post('/stop', async (req, resp) => {
 })
 
 app.get('/usage', async (req, resp) => {
+	const client = await createClient({url: 'redis://red-csbp731u0jms73fg5nlg:6379'})
+  		.on('error', err => console.log('Redis Client Error', err))
+  		.connect();
+	
+	await client.set('key', 'value');
+	const value = await client.get('key3');
+	await client.disconnect();
+
 	console.log(await usage(resp));
 	resp.send((await usage(resp)).toString());	
 });
+
+
 
     http.createServer(app).listen(port, function () {
       console.log('Listening request on port' + port)
