@@ -1,0 +1,13 @@
+{
+  "name": "charging",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:karolkalinski/charging.git",
+  "author": "Karol Kalinski <karol.kalinski@gmail.com>",
+  "license": "MIT",
+  "private": false,
+
+  "scripts" : {
+     "start": "node app.js"
+  }	
+}
