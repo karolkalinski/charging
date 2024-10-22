@@ -9,5 +9,8 @@
   "private": false,
   "scripts": {
     "start": "node app.js"
+  },
+  "dependencies": {
+    "influx": "^5.9.3"
   }
 }
