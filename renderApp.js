@@ -88,9 +88,7 @@ app.get('/usage', async (req, resp) => {
 	await client.set('key', 'value');
 	const value = await client.get('key3');
 	await client.disconnect();
-
-	console.log(await usage(resp));
-	resp.send((await usage(resp)).toString());	
+	resp.send("Value " + value);
 });
 
 
