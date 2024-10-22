@@ -3,8 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const http = require('http')
 const os = require('os')
-const PORT=3333
-
+const port = process.env.PORT || 3001;
 
 const app = express()
 app.use(express.static('public'))
@@ -85,6 +84,6 @@ app.get('/usage', async (req, resp) => {
 	resp.send((await usage(resp)).toString());	
 });
 
-    http.createServer(app).listen(PORT, function () {
-      console.log('Listening request on port 3333')
+    http.createServer(app).listen(port, function () {
+      console.log('Listening request on port' + port)
     })
